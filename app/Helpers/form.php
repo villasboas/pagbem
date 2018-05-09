@@ -31,6 +31,50 @@ function __bte( $field ) {
 }
 
 /**
+ * Imprime o inicio do select
+ *
+ * @param [type] $name
+ * @param [type] $label
+ * @return void
+ */
+function select( $name, $label ) {
+    // Imprime o input
+    return "<div class=\"form-group\">
+                <label class=\"form-label ".__e( $name, 'text-danger' )."\">$label</label>
+                <select name=\"$name\"
+                        id=\"$name\"
+                        class=\"form-control ".__e( $name, 'is-invalid' )."\">
+                ";
+}
+
+/**
+ * Imprime o fim do select
+ *
+ * @param [type] $name
+ * @return void
+ */
+function endselect( $name ) {
+    return __bte( $name )."</select></div>";
+}
+
+/**
+ * Imprime a opcao do select
+ *
+ * @param [type] $value
+ * @param [type] $placeholder
+ * @param [type] $selected
+ * @return void
+ */
+function option( $value, $placeholder, $selected = null ) {
+
+    // Verifica se a opcao esta selecionada
+    $selected = $selected ? 'selected="selected"' : '';
+
+    // Volta a opcao
+    return "<option value='$value' $selected>$placeholder</option>";
+}
+
+/**
  * Imprime um form-group
  *
  * @param [type] $name
@@ -63,7 +107,19 @@ function fgroup( $name, $label, $placeholder, $type = 'text' ) {
  * @return void
  */
 function femail( $name, $label, $placeholder ) {
-    return fgroup( $name, $lavel, $placeholder, 'email' );
+    return fgroup( $name, $label, $placeholder, 'email' );
+}
+
+/**
+ * Imprime um campo de data
+ *
+ * @param [type] $name
+ * @param [type] $label
+ * @param [type] $placeholder
+ * @return void
+ */
+function fdate( $name, $label, $placeholder ) {
+    return fgroup( $name, $label, $placeholder, 'email' );
 }
 
 /**

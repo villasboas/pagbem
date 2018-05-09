@@ -13,7 +13,7 @@ class LoginController extends Controller {
      * @return void
      */
     function showLoginForm() {
-        return view('@auth.pages.login');
+        return view('@auth.pages.login', [ 'title' => 'Login' ] );
     }
 }
 

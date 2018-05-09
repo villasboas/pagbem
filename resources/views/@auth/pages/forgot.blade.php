@@ -1,4 +1,4 @@
-@extends('@layouts.master') @section('content')
+@extends('@layouts.blank') @section('content')
 <div class="page">
 	<div class="page-single">
 	  <div class="container">

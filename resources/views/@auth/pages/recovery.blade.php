@@ -1,4 +1,4 @@
-@extends('@layouts.master')
+@extends('@layouts.blank')
 @section('content')
 <section class="login common-img-bg">
     <div class="container-fluid">

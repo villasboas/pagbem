@@ -16,7 +16,7 @@
                 <div class="card-title">Entrar no sistema</div>
                 
                 @femail( 'email', 'E-mail', 'Digite seu e-mail' )
-                @fpassword( 'password', 'Senha <a href="'.url('forgot').'" class="float-right small">Esqueci minha senha</a>', 'Senha' )
+                @fpassword( 'password', 'Senha <a href="'.url('password/forgot').'" class="float-right small">Esqueci minha senha</a>', 'Senha' )
 
                 @errorAlert
 
@@ -27,9 +27,6 @@
                 </div>
               </div>
             </form>
-            <div class="text-center text-muted">
-                Ainda não tem uma conta? {{ Html::link( 'signup', 'Cadastre-se' ) }}
-            </div>
           </div>
         </div>
       </div>

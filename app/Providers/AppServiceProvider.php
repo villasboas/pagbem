@@ -34,6 +34,43 @@ class AppServiceProvider extends ServiceProvider {
             // Volta a diretiva
             return "<?php echo fgroup( $name, $label, $placeholder ) ?>";
         });
+        \Blade::directive('select', function ($expression) {
+
+            // Obtem os parametros
+            $params     = explode( ',', $expression );
+
+            // Seta as variaveis
+            $name        = $params[0];
+            $label       = isset( $params[1] ) ? $params[1] : $name;
+
+            // Volta a diretiva
+            return "<?php echo select( $name, $label ) ?>";
+        });
+        \Blade::directive('endselect', function ($expression) {
+
+            // Obtem os parametros
+            $params     = explode( ',', $expression );
+
+            // Seta as variaveis
+            $name        = $params[0];
+            $label       = isset( $params[1] ) ? $params[1] : $name;
+
+            // Volta a diretiva
+            return "<?php echo endselect( $name ) ?>";
+        });
+        \Blade::directive('option', function ($expression) {
+
+            // Obtem os parametros
+            $params     = explode( ',', $expression );
+
+            // Seta as variaveis
+            $name        = $params[0];
+            $label       = isset( $params[1] ) ? $params[1] : $name;
+            $selected    = isset( $params[2] ) ? $params[2] : false;
+
+            // Volta a diretiva
+            return "<?php echo option( $name, $label ) ?>";
+        });
         \Blade::directive('femail', function ($expression) {
 
             // Obtem os parametros
@@ -46,6 +83,19 @@ class AppServiceProvider extends ServiceProvider {
 
             // Volta a diretiva
             return "<?php echo fgroup( $name, $label, $placeholder, 'email' ) ?>";
+        });
+        \Blade::directive('fdate', function ($expression) {
+
+            // Obtem os parametros
+            $params     = explode( ',', $expression );
+
+            // Seta as variaveis
+            $name        = $params[0];
+            $label       = isset( $params[1] ) ? $params[1] : $name;
+            $placeholder = isset( $params[2] ) ? $params[2] : $label;
+
+            // Volta a diretiva
+            return "<?php echo fdate( $name, $label, $placeholder, 'date' ) ?>";
         });
         \Blade::directive('fnumber', function ($expression) {
 

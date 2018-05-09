@@ -18,6 +18,7 @@ class CreateClientesTable extends Migration {
             $table->increments('id');
             $table->integer('cidades_id')->unsigned();
             $table->string('nome');
+            $table->string('sobrenome');
             $table->string('documento');
             $table->char('tipo_documento', 1 );
             $table->string('email');
