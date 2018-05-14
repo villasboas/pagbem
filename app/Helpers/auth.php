@@ -1,6 +1,6 @@
 <?php
 
-use \Modules\AuthModule\Library\AuthLibrary as AuthLibrary;
+use App\Core\Auth;
 
 /**
  * Obtem o usuário logado
@@ -8,7 +8,7 @@ use \Modules\AuthModule\Library\AuthLibrary as AuthLibrary;
  * @return void
  */
 function user() {
-    return AuthLibrary::user();
+    return Auth::user();
 }
 
 /**
@@ -26,7 +26,7 @@ function is($role) {
     $roles = is_array( $role ) ? $role : [ $role ];
 
     // Verifica se existe o cargo desejado
-    return ( in_array( user()->role, $roles ) ) ? true : false;
+    return ( in_array( user()->status, $roles ) ) ? true : false;
 }
 
 // End of file

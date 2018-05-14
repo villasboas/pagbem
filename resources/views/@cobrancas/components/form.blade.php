@@ -24,16 +24,16 @@
 
             <div class="row">
               <div class="col">
-                @fnumber('total', '* Total', 'R$' )
+                @fnumber('cobranca', 'total', '* Total', 'R$' )
               </div>
             </div>
 
             <div class="row">
               <div class="col-4">
-                @fnumber('parcelas', '* Nº de parcelas' )
+                @fnumber('cobranca', 'parcelas', '* Nº de parcelas' )
               </div>
               <div class="col">
-                @fdate('vencimento_primeira_parcela', 'Vencimento da primeira parcela' )
+                @fdate('cobranca', 'vencimento_primeira_parcela', 'Vencimento da primeira parcela' )
               </div>
             </div>
 

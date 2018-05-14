@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Financeiro;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TransferenciasController extends Controller
-{
-    //
+/**
+ * @Middleware("web")
+ * 
+ */
+class TransferenciasController extends Controller {
 }
+
+// End of file

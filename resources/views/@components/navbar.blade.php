@@ -1,6 +1,11 @@
 <div class="header collapse d-lg-flex p-0" id="headerMenuCollapse">
     <div class="container">
       <div class="row align-items-center">
+        <div class="col-lg-3 ml-auto text-right">
+          <span class="text-success">
+            Saldo: R$ 23.000,00
+          </span>
+        </div>
         <div class="col-lg order-lg-first">
           <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
             <li class="nav-item">
@@ -17,7 +22,7 @@
                 <i class="fa fa-university"></i>Meu Dinheiro
               </a>
               <div class="dropdown-menu dropdown-menu-arrow">
-                <a href="./cards.html" class="dropdown-item ">Contas bancárias</a>
+                <a href="{{ url('contas') }}" class="dropdown-item ">Contas bancárias</a>
                 <a href="./cards.html" class="dropdown-item ">Fazer transferência</a>
                 <a href="./cards.html" class="dropdown-item ">Movimentações</a>
               </div>
@@ -27,7 +32,7 @@
                 <i class="fa fa-wrench"></i> Sistema
               </a>
               <div class="dropdown-menu dropdown-menu-arrow">
-                <a href="./cards.html" class="dropdown-item ">Usuários</a>
+                <a href="{{ url('usuarios') }}" class="dropdown-item ">Usuários</a>
               </div>
             </li>
           </ul>

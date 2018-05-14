@@ -6,7 +6,9 @@
  */
 $helpers = [
     'form',
-    'auth'
+    'auth',
+    'date',
+    'utils'
 ];
 
 /**

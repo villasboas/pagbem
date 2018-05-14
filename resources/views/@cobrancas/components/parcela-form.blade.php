@@ -11,27 +11,27 @@
         <div class="card-body">
             <div class="row">
                 <div class="col">
-                    @select('conta_bancaria_id', '* Conta bancária')
-                      @option('J', 'CNPJ' )
-                      @option('F', 'CPF' )
+                    @select('fatura', 'conta_bancaria_id', '* Conta bancária')
+                      @option('fatura', 'J', 'CNPJ' )
+                      @option('fatura', 'F', 'CPF' )
                     @endselect('tipo_documento')
                 </div>
             </div>
 
             <div class="row">
               <div class="col">
-                @fnumber('total', '* Total', 'R$' )
+                @fnumber('fatura', 'total', '* Total', 'R$' )
               </div>
               <div>
-                @fdate('vencimento', '* Vencimento', '12/12/2019' )
+                @fdate('fatura', 'vencimento', '* Vencimento', '12/12/2019' )
               </div>
             </div>
 
             <div class="row">
               <div class="col">
-                <div class="form-group">
+                <div class="form-group pb-1">
                   <label class="form-label">Nota fiscal</label>
-                  <input class="form-control" type="file" name="" id="">
+                  <input type="file" name="" id="">
                 </div>
               </div>
             </div>

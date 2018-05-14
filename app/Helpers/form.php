@@ -65,11 +65,19 @@ function endselect( $name ) {
  * @param [type] $selected
  * @return void
  */
-function option( $value, $placeholder, $selected = null ) {
+function option( $form, $name, $value, $placeholder, $type = 'text' ) {
 
     // Verifica se a opcao esta selecionada
-    $selected = $selected ? 'selected="selected"' : '';
+    $selected = 'selected="selected"';
 
+    // Obtem o valor do campo
+    $sessionvalue = session()->get( $form, null );
+    $sessionvalue = $sessionvalue ? $sessionvalue->$name : null;
+    $inputValue   = old($name) ? old($name) : $sessionvalue;
+
+    // Verifica se esta selecionado
+    $selected =  $inputValue ? $selected : '';
+        
     // Volta a opcao
     return "<option value='$value' $selected>$placeholder</option>";
 }
@@ -83,13 +91,18 @@ function option( $value, $placeholder, $selected = null ) {
  * @param [type] $type
  * @return void
  */
-function fgroup( $name, $label, $placeholder, $type = 'text' ) {
+function fgroup( $form, $name, $label, $placeholder, $type = 'text' ) {
     
+    // Obtem o valor do campo
+    $sessionvalue = session()->get( $form, null );
+    $sessionvalue = $sessionvalue ? $sessionvalue->$name : null;
+    $inputValue   = old($name) ? old($name) : $sessionvalue;
+
     // Imprime o input
     return "<div class=\"form-group\">
                 <label class=\"form-label ".__e( $name, 'text-danger' )."\">$label</label>
                 <input  type=\"$type\" 
-                        value=\"".old( '$name' )."\"
+                        value=\"".$inputValue."\"
                         name=\"$name\"
                         id=\"$name\"
                         class=\"form-control ".__e( $name, 'is-invalid' )."\" 
@@ -106,8 +119,8 @@ function fgroup( $name, $label, $placeholder, $type = 'text' ) {
  * @param [type] $placeholder
  * @return void
  */
-function femail( $name, $label, $placeholder ) {
-    return fgroup( $name, $label, $placeholder, 'email' );
+function femail( $form,$name, $label, $placeholder ) {
+    return fgroup( $form, $name, $label, $placeholder, 'email' );
 }
 
 /**
@@ -118,8 +131,8 @@ function femail( $name, $label, $placeholder ) {
  * @param [type] $placeholder
  * @return void
  */
-function fdate( $name, $label, $placeholder ) {
-    return fgroup( $name, $label, $placeholder, 'email' );
+function fdate( $form, $name, $label, $placeholder ) {
+    return fgroup( $form, $name, $label, $placeholder, 'email' );
 }
 
 /**
@@ -130,8 +143,8 @@ function fdate( $name, $label, $placeholder ) {
  * @param [type] $placeholder
  * @return void
  */
-function fnumber( $name, $label, $placeholder ) {
-    return fgroup( $name, $lavel, $placeholder, 'email' );
+function fnumber( $form,$name, $label, $placeholder ) {
+    return fgroup( $form, $name, $label, $placeholder, 'number' );
 }
 
 /**
@@ -142,8 +155,20 @@ function fnumber( $name, $label, $placeholder ) {
  * @param [type] $placeholder
  * @return void
  */
-function fpassword( $name, $label, $placeholder ) {
-    return fgroup( $name, $label, $placeholder, 'password' );
+function fpassword( $form, $name, $label, $placeholder ) {
+    return fgroup( $form, $name, $label, $placeholder, 'password' );
+}
+
+/**
+ * Imprime o HTML de uma tag
+ *
+ * @param [type] $text
+ * @param [type] $color
+ * @return void
+ */
+function __tag( $text, $color ) {
+    $html = "<span class='tag tag-%s'>%s</span>";
+    return sprintf( $html, $color, $text );
 }
 
 // End of file
