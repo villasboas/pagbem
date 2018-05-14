@@ -43,7 +43,8 @@ function select( $name, $label ) {
                 <label class=\"form-label ".__e( $name, 'text-danger' )."\">$label</label>
                 <select name=\"$name\"
                         id=\"$name\"
-                        class=\"form-control ".__e( $name, 'is-invalid' )."\">
+                        data-live-search='true'
+                        class=\"form-control selectpicker ".__e( $name, 'is-invalid' )."\">
                 ";
 }
 

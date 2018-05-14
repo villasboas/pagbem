@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class ListController extends Controller {
     
     /**
-     * @Get("usuarios")
+     * @Get("/usuarios")
      *
      * @return void
      */

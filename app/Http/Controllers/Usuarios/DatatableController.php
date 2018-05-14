@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Usuarios;
 
-use App\Datatables\UsuariosDatatables;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Datatables\UsuariosDatatables;
 
 /**
  * @Middleware("web")

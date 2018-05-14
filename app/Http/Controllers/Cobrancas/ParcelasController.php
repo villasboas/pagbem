@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Cobrancas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+/**
+ * @Middleware("web")
+ * 
+ */
 class ParcelasController extends Controller {
 
     /**

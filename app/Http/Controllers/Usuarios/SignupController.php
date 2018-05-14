@@ -15,7 +15,7 @@ use App\Http\Requests\UsuariosEditRequest;
 class SignupController extends Controller {
 
     /**
-     * @Get("usuarios/remover/{usuario}")
+     * @Get("/usuarios/remover/{usuario}")
      *
      * @param Usuarios $usuario
      * @return void
@@ -36,30 +36,24 @@ class SignupController extends Controller {
     }
 
     /**
-     * @Get("usuarios/{usuarios}")
+     * @Get("/usuarios/{usuarios}")
      *
      * @param Usuarios $usuarios
      * @return void
      */
     function showEditForm( Usuarios $usuarios ) {
 
-        // Obtem o builder do datatable
-        $builder = \App\Datatables\UsuariosDatatables::builder('usuarios/datatables');
-
         // Seta o flash na sessao
         session()->flash('usuarios', $usuarios);
 
-        // Retorna a view
-        return view('@usuarios.pages.home',[
-            'title'    => 'Usuários',
-            'builder'  => $builder
-        ]);
+        // Volta o index
+        return $this->index();
     }
 
     /**
      * Cria um novo usuário
      *
-     * @Post("usuarios")
+     * @Post("/usuarios")
      * @param UsuariosRequest $request
      * @return void
      */
@@ -77,7 +71,7 @@ class SignupController extends Controller {
     /**
      * Realiza o update de um usuário
      *
-     * @Post("usuarios/{usuarios}")
+     * @Post("/usuarios/{usuarios}")
      * @param UsuariosRequest $request
      * @return void
      */
