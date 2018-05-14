@@ -97,7 +97,7 @@ class ContasController extends Controller {
         } catch( \Error $e ) {  
 
             // Volta a mensagem de erro
-            return back()->with( 'error', $e->getMessage() );
+            return redirect('contas')->with( 'error', $e->getMessage() );
         }
     }
 

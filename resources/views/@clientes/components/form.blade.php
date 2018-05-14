@@ -1,89 +1,148 @@
 <div class="col-5">
-    <form action="" class="card">
-        <div class="card-header">
-            Formulário cliente
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-4">
-                    @fgroup( 'cliente','nome', '* Nome', 'Digite seu nome' )
-                </div>
-                <div class="col">
-                    @fgroup( 'cliente','sobrenome', '* Sobrenome', 'Digite seu sobrenome' )
-                </div>
-            </div>
+    
+    @if($clientes = session()->get('cliente'))
+    <form action="{{ url('clientes/'.$clientes->id) }}" method="POST" class="card">
+    @else
+    <form action="{{ url('clientes') }}" method="POST" class="card">
+    @endif
 
-            <div class="row">
-                <div class="col-4">
-                    @select('tipo_documento', '* Tipo')
-                      @option('J', 'CNPJ' )
-                      @option('F', 'CPF' )
-                    @endselect('tipo_documento')
-                </div>
-                <div class="col">
-                    @fgroup( 'cliente','documento', '* Nº do documento', 'Digite o seu documento' )
-                </div>
-            </div>
+      {{ csrf_field() }}
 
-            <div class="page-header">
-              <h6>Dados de contato</h6>
-            </div>
+      <div class="card-header">
+          Formulário cliente
+          @if($clientes = session()->get('cliente'))
+          <div class="card-options">
+            <a href="{{ url('clientes' )}}" class="btn btn-info">
+              Voltar
+            </a>
+          </div>
+          @endif
+      </div>
 
-            <div class="row">
-              <div class="col">
-                @femail('email', '* E-mail', 'Digite seu e-mail' )
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                @fgroup( 'cliente','telefone', '* Telefone', '(**) ****-****')
-              </div>
-              <div class="col">
-                @fgroup( 'cliente','celular', '* Celular', '(**) *****-****')
-              </div>
-            </div>
-
-            <div class="page-header">
-              <h6>Dados de localização</h6>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                @fgroup( 'cliente','estado', '* Estado', 'Informe o estado' )
-              </div>
-              <div class="col">
-                @fgroup( 'cliente','cidade', '* Cidade', 'Informe a cidade' )
-              </div>
-            </div>
-
-            <div class="row">
+      <div class="card-body">
+          <div class="row">
               <div class="col-4">
-                @fgroup( 'cliente','cep', '* CEP')
+                  @fgroup( 'cliente','nome', '* Nome', 'Digite seu nome' )
               </div>
               <div class="col">
-                @fgroup( 'cliente','logradouro', '* Logradouro')
+                  @fgroup( 'cliente','sobrenome', '* Sobrenome', 'Digite seu sobrenome' )
               </div>
-              <div class="col-2">
-                @fgroup( 'cliente','numero', '* Nº', '99' )
+          </div>
+
+          <div class="row">
+              <div class="col-4">
+                  @select('tipo_documento', '* Tipo')
+                    @option('cliente', 'tipo_documento', 'J', 'CNPJ' )
+                    @option('cliente', 'tipo_documento', 'F', 'CPF' )
+                  @endselect('tipo_documento')
               </div>
+              <div class="col">
+                  @fgroup( 'cliente','documento', '* Nº do documento', 'Digite o seu documento' )
+              </div>
+          </div>
+
+          <div class="page-header">
+            <h6>Dados de contato</h6>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              @femail('cliente', 'email', '* E-mail', 'Informe um e-mail' )
             </div>
+          </div>
 
-            <div class="row">
-              <div class="col">
-                @fgroup( 'cliente','bairro', '* Bairro')
-              </div>
-              <div class="col">
-                @fgroup( 'cliente','complemento', 'Complemento' )
-              </div>
+          <div class="row">
+            <div class="col">
+              @fgroup( 'cliente','telefone', '* Telefone', '(**) ****-****')
             </div>
+            <div class="col">
+              @fgroup( 'cliente','celular', '* Celular', '(**) *****-****')
+            </div>
+          </div>
 
-        </div>
+          <div class="page-header">
+            <h6>Dados de localização</h6>
+          </div>
 
-        <div class="card-footer">
-          <button class="btn btn-success btn-block">
-            Salvar cliente
-          </button>
-        </div>
+          <div class="row">
+            <div class="col">                
+              @select('estados_id', '* Estado')
+                @foreach( $estados as $estado )
+                @option('cliente', 'estados_id', $estado->id, $estado->nome )
+                @endforeach
+              @endselect('estados_id')
+            </div>
+            <div class="col">
+              @select('cidades_id', '* Cidade')
+              @endselect('cidades_id')
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              @fgroup( 'cliente','cep', '* CEP')
+            </div>
+            <div class="col">
+              @fgroup( 'cliente','logradouro', '* Logradouro')
+            </div>
+            <div class="col-2">
+              @fgroup( 'cliente','numero', '* Nº', '99' )
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              @fgroup( 'cliente','bairro', '* Bairro')
+            </div>
+            <div class="col">
+              @fgroup( 'cliente','complemento', 'Complemento' )
+            </div>
+          </div>
+
+          <div class="page-header">
+            <h6>Dados de disponibilidade</h6>
+          </div>
+
+          <div class="row">
+            <div class="col">                
+              @select('status', '* Status')
+                @option('cliente', 'status', 'A', 'Ativo' )
+                @option('cliente', 'status', 'I', 'Inadinplente' )
+                @option('cliente', 'status', 'B', 'Bloqueado' )
+              @endselect('status')
+            </div>
+          </div>
+
+      </div>
+
+      <div class="card-footer">
+        <button class="btn btn-success btn-block">
+          Salvar cliente
+        </button>
+      </div>
     </form>
 </div>
+
+@push('scripts')
+<script>
+  $( document ).ready( function() {
+    $( '#cidades_id' ).liveSelect({
+        parent: '#estados_id',
+        url: '{{ url( 'api/v1/estado/{parentValue}/cidades' ) }}',
+        placeholder: '* Qual a cidade?',
+        {{ old('cidades_id') ? 'value: '.old('cidades_id').',' : '' }}
+        parser: function( data ) {
+          console.log( 'chamou' );
+            if ( data.status == 200 ) {
+                return data.data.map( function( item ) {
+                    return {
+                        label: item.nome,
+                        value: item.id
+                    };
+                });
+            } else return [];
+        }
+    });
+});
+</script>
+@endpush

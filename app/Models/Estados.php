@@ -4,7 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Estados extends Model
-{
-    //
+class Estados extends Model {
+
+    /**
+     * Tabela no banco de dados
+     *
+     * @var string
+     */
+    protected $table = 'estados';
 }
+
+// End of file

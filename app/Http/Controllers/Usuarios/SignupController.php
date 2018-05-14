@@ -31,7 +31,7 @@ class SignupController extends Controller {
         } catch( \Error $e ) {  
 
             // Volta a mensagem de erro
-            return back()->with( 'error', $e->getMessage() );
+            return redirect('usuarios')->with( 'error', $e->getMessage() );
         }
     }
 

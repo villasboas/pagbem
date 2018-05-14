@@ -16,7 +16,7 @@
           </div>
 
           <div class="row row-cards row-deck">
-            @include('@clientes.components.table')
+            @include('@components.datatables')
             @include('@clientes.components.form')
           </div>
         </div>

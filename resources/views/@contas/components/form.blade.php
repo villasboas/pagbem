@@ -1,7 +1,7 @@
 <div class="col-5">
     
-    @if($usuarios = session()->get('conta'))
-    <form action="{{ url('contas/'.$usuarios->id) }}" method="POST" class="card">
+    @if($contas = session()->get('conta'))
+    <form action="{{ url('contas/'.$contas->id) }}" method="POST" class="card">
     @else
     <form action="{{ url('contas') }}" method="POST" class="card">
     @endif
