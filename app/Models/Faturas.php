@@ -35,7 +35,7 @@ class Faturas extends Model {
      * @return void
      */
     function cobranca() {
-        return $this->belongsTo('App\Models\Cobrancas');
+        return $this->belongsTo('App\Models\Cobrancas', 'cobrancas_id');
     }
 }
 
