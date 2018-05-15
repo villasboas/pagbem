@@ -66,7 +66,6 @@ class CobrancasDatatables extends CoreDatatables {
         return '<div class="item-action dropdown">
                     <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">
-                    <a href="'.url('cobrancas/remover/'.$model->id).'" class="dropdown-item"><i class="dropdown-icon fe fe-trash"></i> Deletar </a>
                     <a href="'.url('cobrancas/'.$model->id).'" class="dropdown-item"><i class="dropdown-icon fe fe-edit-2"></i> Editar </a>                    </div>
                 </div>';
         })

@@ -26,7 +26,7 @@ class CobrancaRequest extends FormRequest {
             'descricao' => 'required',
             'total' => 'required',
             'parcelas' => 'required',
-            'vencimento_primeira_parcela' => 'required',
+            'vencimento_primeira_parcela' => 'required|after:yesterday',
             'status' => 'required'
         ];
     }

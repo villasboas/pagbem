@@ -1,4 +1,4 @@
-<div class="col-5">
+<div class="col-xs-12 col-sm-12 col-md-5">
     
     @if($clientes = session()->get('cliente'))
     <form action="{{ url('clientes/'.$clientes->id) }}" method="POST" class="card">
@@ -21,11 +21,8 @@
 
       <div class="card-body">
           <div class="row">
-              <div class="col-4">
-                  @fgroup( 'cliente','nome', '* Nome', 'Digite seu nome' )
-              </div>
               <div class="col">
-                  @fgroup( 'cliente','sobrenome', '* Sobrenome', 'Digite seu sobrenome' )
+                  @fgroup( 'cliente','nome', '* Nome', 'Digite seu nome' )
               </div>
           </div>
 
@@ -125,14 +122,20 @@
 
 @push('scripts')
 <script>
+  @php
+
+  $sessionValue = session()->get('cliente') ? session()->get('cliente')->cidades_id : null;
+  $oldValue = old('cidades_id', null);
+  $oldValue = $oldValue ? $oldValue : $sessionValue;
+
+  @endphp
   $( document ).ready( function() {
     $( '#cidades_id' ).liveSelect({
         parent: '#estados_id',
         url: '{{ url( 'api/v1/estado/{parentValue}/cidades' ) }}',
         placeholder: '* Qual a cidade?',
-        {{ old('cidades_id') ? 'value: '.old('cidades_id').',' : '' }}
+        {{ $sessionValue ? 'value: '.$sessionValue.',' : '' }}
         parser: function( data ) {
-          console.log( 'chamou' );
             if ( data.status == 200 ) {
                 return data.data.map( function( item ) {
                     return {

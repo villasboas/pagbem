@@ -23,7 +23,6 @@ class ClientesRequest extends FormRequest {
     public function rules() {
         return [
             'nome' => 'required|min:3|max:60',
-            'sobrenome' => 'required|min:3|max:255',
             'documento' => 'required',
             'cidades_id' => 'required|integer',
             'tipo_documento' => 'required|size:1',

@@ -58,7 +58,7 @@ class ClientesController extends Controller {
      * @param ContasBancarias $usuarios
      * @return void
      */
-    function store( ContasRequest $request, Clientes $cliente ) {
+    function store( ClientesRequest $request, Clientes $cliente ) {
 
         // Preenche o usuário
         $cliente->fill( removeIfNull( $request->all() ) );
@@ -116,6 +116,7 @@ class ClientesController extends Controller {
     function showEditForm( Clientes $cliente ) {
 
         // Seta o flash na sessao
+        $cliente->estados_id = $cliente->cidade->estados_id;
         session()->flash('cliente', $cliente);
 
         // Volta o index

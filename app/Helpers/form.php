@@ -77,7 +77,7 @@ function option( $form, $name, $value, $placeholder, $type = 'text' ) {
     $inputValue   = old($name) ? old($name) : $sessionvalue;
 
     // Verifica se esta selecionado
-    $selected =  $inputValue ? $selected : '';
+    $selected =  $inputValue == $value ? $selected : '';
         
     // Volta a opcao
     return "<option value='$value' $selected>$placeholder</option>";

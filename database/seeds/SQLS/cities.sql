@@ -2065,8 +2065,7 @@ INSERT INTO `cidades` (`id`, `nome`, `estados_id`) VALUES
 (2067, 'Morada Nova de Minas', 11),
 (2068, 'Morro da Garça', 11),
 (2069, 'Morro do Pilar', 11),
-(2070, 'Munhoz', 11);
-INSERT INTO `cidades` (`id`, `nome`, `estados_id`) VALUES
+(2070, 'Munhoz', 11),
 (2071, 'Muriaé', 11),
 (2072, 'Mutum', 11),
 (2073, 'Muzambinho', 11),
@@ -3974,8 +3973,7 @@ INSERT INTO `cidades` (`id`, `nome`, `estados_id`) VALUES
 (3976, 'Cruzeiro do Sul', 23),
 (3977, 'David Canabarro', 23),
 (3978, 'Derrubadas', 23),
-(3979, 'Dezesseis de Novembro', 23);
-INSERT INTO `cidades` (`id`, `nome`, `estados_id`) VALUES
+(3979, 'Dezesseis de Novembro', 23),
 (3980, 'Dilermando de Aguiar', 23),
 (3981, 'Dois Irmãos', 23),
 (3982, 'Dois Irmãos das Missões', 23),
@@ -5594,6 +5592,5 @@ INSERT INTO `cidades` (`id`, `nome`, `estados_id`) VALUES
 (5606, 'Paraíso das Águas', 12),
 (5607, 'Pinto Bandeira', 23),
 (5608, 'Balneário Rincão', 24),
-(5609, 'Pescaria Brava', 24),
-(5610, 'Exterior', 99);
+(5609, 'Pescaria Brava', 24);
 Update cities set created_at = now();

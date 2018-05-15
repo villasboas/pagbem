@@ -20,7 +20,6 @@ class Clientes extends Model {
      */
     protected $fillable = [
         'nome',
-        'sobrenome',
         'documento',
         'cidades_id',
         'tipo_documento',
@@ -42,6 +41,15 @@ class Clientes extends Model {
      */
     function cobrancas() {
         return $this->hasMany('App\Models\Cobrancas', 'clientes_id' );
+    }
+
+    /**
+     * Cidade do usuário
+     *
+     * @return void
+     */
+    function cidade() {
+        return $this->belongsTo('App\Models\Cidades', 'cidades_id' );
     }
 }
 

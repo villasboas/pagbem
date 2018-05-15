@@ -21,6 +21,7 @@ class ClientesDatatables extends CoreDatatables {
     static $columns = [
         'Código' => 'id',
         'Nome'   => 'nome',
+        'E-mail' => 'email',
         'Status' => 'status',
         ''       => 'actions'
     ];
@@ -34,12 +35,12 @@ class ClientesDatatables extends CoreDatatables {
         
         // Monta a query
         $query = Db::table('clientes')
-        ->select(  ['id',  'nome', 'status', 'sobrenome', 'id as actions' ]);
+        ->select(  ['id',  'nome', 'email','status', 'id as actions' ]);
 
         // Monta o datatable
         return Datatables::of( $query )
         ->editColumn('nome', function( $model ){
-            return $model->nome.' '.$model->sobrenome;
+            return $model->nome;
         })
         ->editColumn('status',function($model){
             switch( $model->status ) {

@@ -57,6 +57,9 @@ $.fn.liveSelect = function( options ) {
 
         // Habilita a edicao
         self.enable();
+
+        // Chama o método refresh
+        self.selectpicker('refresh');
     }
 
     /**
@@ -77,7 +80,10 @@ $.fn.liveSelect = function( options ) {
             self.fill( data );
 
             // Verifica se deve setar um valor inicial
-            if ( init && options.value ) self.val( options.value );
+            if ( init && options.value ) {
+                self.val( options.value );
+                self.selectpicker('refresh');
+            }
         });
     }
 
@@ -91,7 +97,7 @@ $.fn.liveSelect = function( options ) {
         self.disable();
         
         // Obtem o valor do pai
-        var parentValue = $(  options.parent  ).val();
+        var parentValue = $(options.parent ).val();
         
         // Verifica se existe um valor
         if ( parentValue ) {
@@ -106,22 +112,18 @@ $.fn.liveSelect = function( options ) {
             // Limpa o select
             self.clean();
         }
-
-        // Chama o método refresh
-        self.selectpicker('refresh');
     }
 
     /**
      * Quando o select PAI for alterado
      */
     $( options.parent ).on('changed.bs.select', self.update );
-    $( option.parent ).change( self.update );
 
     /**
      * Indica que o select ja foi atualizado
      * 
      */
-    self.change( function() {
+    self.on('changed.bs.select', function() {
         self.dirty = true;
     });
 
