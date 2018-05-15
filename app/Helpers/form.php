@@ -7,7 +7,7 @@
  * @param [type] $class
  * @return void
  */
-function __e( $field, $class ) {
+function __e( $field, $class = 'text-danger' ) {
 
     // Obtem os erros
     $errors = Session::get( 'errors', new Illuminate\Support\MessageBag );
@@ -133,7 +133,7 @@ function femail( $form,$name, $label, $placeholder ) {
  * @return void
  */
 function fdate( $form, $name, $label, $placeholder ) {
-    return fgroup( $form, $name, $label, $placeholder, 'email' );
+    return fgroup( $form, $name, $label, $placeholder, 'date' );
 }
 
 /**

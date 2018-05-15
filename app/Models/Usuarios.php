@@ -51,8 +51,6 @@ class Usuarios extends Model {
         if ( !$user ) throw new \Error('Nenhum usuário com o e-mail informado.');
 
         // Verifica se a senha esta correta
-        // dd( $senha, $user->senha );
-        // dd( Hash::check( $senha, $user->senha ) );
         if ( !Hash::check( $senha, $user->senha ) ) throw new \Error('Senha digitada está incorreta.' );
         
         // Verifica se o usuário esta bloqueado ou não

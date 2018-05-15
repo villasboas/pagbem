@@ -35,6 +35,14 @@ class Clientes extends Model {
         'bairro',
         'status'
     ];
+
+    /**
+     * Relacao com cobranca
+     * 
+     */
+    function cobrancas() {
+        return $this->hasMany('App\Models\Cobrancas', 'clientes_id' );
+    }
 }
 
 // End of file

@@ -21,19 +21,29 @@
                 <div class="card-header">
                   <h3 class="card-title">Cobrança</h3>
                   <div class="card-options">
-                      <span class="tag tag-green float-right">Aberta</span>
+                    @switch($cobranca->status)
+                      @case('A')
+                      <span class="tag tag-blue float-right">Aberta</span>
+                      @break
+                      @case('P')
+                      <span class="tag tag-green float-right">Paga</span>
+                      @break
+                      @case('C')
+                      <span class="tag tag-danger float-right">Cancelada</span>
+                      @break                  
+                    @endswitch
                   </div>
                 </div>
                 <div class="card-body">
                   <div class="list-group">
                     <div class="list-group-item">
-                      <b>Cliente:</b> <br>  Nome do cliente
+                      <b>Cliente:</b> <br>  {{ $cobranca->cliente->nome }}
                     </div>
                     <div class="list-group-item">
-                      <b>Descrição:</b> <br>  Descrição da cobrança
+                      <b>Descrição:</b> <br>  {{ $cobranca->descricao }}
                     </div>
                     <div class="list-group-item">
-                      <b>Total:</b> <br>  R$ 300,00
+                      <b>Total:</b> <br>  R$ {{ number_format( $cobranca->total, 2, ',', '.' )}}
                     </div>
                     <div class="list-group-item">
                       <b>Total pago:</b> <br>  R$ 00,00
@@ -45,7 +55,7 @@
           </div>
 
           <div class="row row-cards row-deck">
-            @include('@cobrancas.components.parcelas')
+            @include('@components.datatables')
             @include('@cobrancas.components.parcela-form')
           </div>
         </div>
