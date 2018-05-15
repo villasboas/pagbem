@@ -43,7 +43,8 @@ class CobrancasDatatables extends CoreDatatables {
                     'cobrancas.id as parcelas',
                     'cobrancas.status', 
                     'cobrancas.id as actions'
-                    ]);
+                    ])
+        ->orderBy('id','desc');
 
         // Monta o datatable
         return Datatables::of( $query )
