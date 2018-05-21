@@ -24,7 +24,7 @@ class FaturasRequest extends FormRequest {
         return [
             'conta_bancaria_id' => 'nullable',
             'valor' => 'required',
-            'vencimento' => 'date|required',
+            'vencimento' => 'date|required|after:yesterday',
             'status' => 'required',
             'nota_fiscal' => 'nullable'
         ];

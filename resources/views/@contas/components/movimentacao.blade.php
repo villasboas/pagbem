@@ -20,6 +20,8 @@
           </div>
           <div class="card-body">
 
+              @include('@components.alert')
+
               <div class="row">
                   <div class="col">
                       @select('contas_bancarias_id', '* Conta bancária')

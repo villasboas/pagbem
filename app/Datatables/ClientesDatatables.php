@@ -35,7 +35,7 @@ class ClientesDatatables extends CoreDatatables {
         
         // Monta a query
         $query = Db::table('clientes')
-        ->select(  ['id',  'nome', 'email','status', 'id as actions' ]);
+        ->select(  ['id',  'nome', 'email','status' ]);
 
         // Monta o datatable
         return Datatables::of( $query )
@@ -57,7 +57,7 @@ class ClientesDatatables extends CoreDatatables {
                     return $model->status;
             }
         })
-        ->editColumn('actions', function( $model ) {
+        ->addColumn('actions', function( $model ) {
             return '<div class="item-action dropdown">
                         <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">

@@ -42,28 +42,9 @@ class TransferenciasController extends Controller {
         // Volta a view
         return view('@contas.pages.transferencias',[
             'contas' => $contas,
-            'builder' => $builder
+            'builder' => $builder,
+            'title' => 'Transferências'
         ]);
-    }
-
-    /**
-     * @Post("/transferencias/{conta}")
-     *
-     * @param ContasBancarias $usuarios
-     * @return void
-     */
-    function store( ContasRequest $request, ContasBancarias $conta ) {
-
-        // Preenche o usuário
-        $conta->fill( removeIfNull( $request->all() ) );
-        
-        // Salva o usuário
-        try {
-            $conta->save();
-            return back()->with('success', 'Conta bancária salvo com sucesso.' );
-        } catch( \Error $e ) {
-            return back()->with('error', $e->getMessage() );
-        }
     }
 
     /**
@@ -74,8 +55,17 @@ class TransferenciasController extends Controller {
      */
     function create( TransferenciaRequest $request, Movimentacoes $movimentacoes ) {
         try {
+
+            // Preenche os dados da movimentacao
             $movimentacoes->fill( $request->all() );
             $movimentacoes->tipo = 'S';
+
+            // Obtem o saldo
+            $saldo = Movimentacoes::getBalance();
+            if ( $saldo < $movimentacoes->valor ) {
+                return back()->with('error', 'O seu saldo atual é inferior ao valor da transferência!');
+            }
+
             $movimentacoes->save();
             return back()->with('success', 'Transferência registrada com sucesso!');
         } catch( \Error $e ) {
@@ -101,21 +91,6 @@ class TransferenciasController extends Controller {
             // Volta a mensagem de erro
             return redirect('contas')->with( 'error', $e->getMessage() );
         }
-    }
-
-    /**
-     * @Get("/transferencias/{conta}")
-     *
-     * @param ContasBancarias $usuarios
-     * @return void
-     */
-    function showEditForm( Movimentacoes $movimentacao ) {
-
-        // Seta o flash na sessao
-        session()->flash('movimentacao', $movimentacao);
-
-        // Volta o index
-        return $this->index();
     }
 }
 

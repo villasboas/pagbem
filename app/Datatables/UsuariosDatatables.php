@@ -42,8 +42,7 @@ class UsuariosDatatables extends CoreDatatables {
                     'ultimo_ip',
                     'email', 
                     'ultimo_login', 
-                    'status',
-                    'id as actions' ])
+                    'status' ])
         ->where( 'id', '<>', user()->id );
 
         // Monta o datatable
@@ -60,7 +59,7 @@ class UsuariosDatatables extends CoreDatatables {
                     return $model->status;
             }
         })
-        ->editColumn('actions', function( $model ) {
+        ->addColumn('actions', function( $model ) {
         return '<div class="item-action dropdown">
                     <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">

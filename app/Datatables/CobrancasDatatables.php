@@ -20,7 +20,7 @@ class CobrancasDatatables extends CoreDatatables {
      */
     static $columns = [
         'Código' => 'id',
-        'Cliente' => 'nome',
+        'Cliente' => 'clientes.nome',
         'Descrição' => 'descricao',
         'Parcelas' => 'parcelas',
         'Status' => 'status',
@@ -38,11 +38,10 @@ class CobrancasDatatables extends CoreDatatables {
         $query = Db::table('cobrancas')
         ->join('clientes', 'cobrancas.clientes_id', '=', 'clientes.id')
         ->select(  ['cobrancas.id', 
-                    'clientes.nome', 
+                    'clientes.nome as clientes.nome', 
                     'cobrancas.descricao',
                     'cobrancas.id as parcelas',
-                    'cobrancas.status', 
-                    'cobrancas.id as actions'
+                    'cobrancas.status'
                     ])
         ->orderBy('id','desc');
 
@@ -63,7 +62,7 @@ class CobrancasDatatables extends CoreDatatables {
                     return $model->status;
             }
         })
-        ->editColumn('actions', function( $model ) {
+        ->addColumn('actions', function( $model ) {
         return '<div class="item-action dropdown">
                     <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">

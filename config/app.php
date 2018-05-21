@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\AnnotationsServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
+        laravel\pagseguro\Platform\Laravel5\ServiceProvider::class
     ],
 
     /*
@@ -229,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'PagSeguro' => laravel\pagseguro\Platform\Laravel5\PagSeguro::class
     ],
 
 ];

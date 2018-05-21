@@ -14,6 +14,24 @@
               Dashboard
             </h1>
           </div>
+
+          @include('@components.indicadores')
+
+          <div class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                  <div class="card-header">
+                    Todas as faturas
+                  </div>
+                  <div class="card-body pt-2 pb-2">
+                      <div class="table-responsive">
+                          {!! $builder->table(['class' => 'table table-bordered'], true) !!}
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div><!-- invoices datatable -->
+
           <div class="row row-cards">
             <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
@@ -1598,3 +1616,7 @@
     @include( '@components.footer' )
   </div>
 @endsection
+
+@push('scripts')
+{{ $builder->scripts() }}
+@endpush

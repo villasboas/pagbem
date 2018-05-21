@@ -22,7 +22,7 @@ class ContasBancariasDatatables extends CoreDatatables {
         'Código' => 'id',
         'Nome'   => 'nome',
         'Status' => 'status',
-        ''       => 'actions'
+        '' => 'actions'
     ];
 
     /**
@@ -34,7 +34,7 @@ class ContasBancariasDatatables extends CoreDatatables {
         
         // Monta a query
         $query = Db::table('contas_bancarias')
-        ->select(  ['id',  'nome', 'status', 'id as actions' ]);
+        ->select(  ['id',  'nome', 'status' ]);
 
         // Monta o datatable
         return Datatables::of( $query )
@@ -50,7 +50,7 @@ class ContasBancariasDatatables extends CoreDatatables {
                     return $model->status;
             }
         })
-        ->editColumn('actions', function( $model ) {
+        ->addColumn('actions', function( $model ) {
             return '<div class="item-action dropdown">
                         <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                         <div class="dropdown-menu dropdown-menu-right">

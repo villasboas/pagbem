@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Datatables;
 use Yajra\Datatables\Html\Builder;
 
-class TransferenciasDatatables extends CoreDatatables {
+class MovimentacoesDatatable extends CoreDatatables {
 
     /**
      * Instancia do builder
@@ -22,7 +22,8 @@ class TransferenciasDatatables extends CoreDatatables {
         'Código' => 'movimentacoes.id',
         'Conta Bancária'  => 'contas_bancarias.nome',
         'Valor'  => 'movimentacoes.valor',
-        'Data'   => 'movimentacoes.created_at'
+        'Data'   => 'movimentacoes.created_at',
+        'Tipo'   => 'movimentacoes.tipo', 
     ];
 
     /**
@@ -37,27 +38,30 @@ class TransferenciasDatatables extends CoreDatatables {
         ->join('contas_bancarias', 'movimentacoes.contas_bancarias_id', '=', 'contas_bancarias.id')
         ->select([  'movimentacoes.id as movimentacoes.id', 
                     'contas_bancarias.nome as contas_bancarias.nome', 
-                    'movimentacoes.valor as movimentacoes.valor',
-                    'movimentacoes.created_at as movimentacoes.created_at' ])
-        ->where('movimentacoes.tipo', 'S');
+                    'movimentacoes.valor as movimentacoes.valor', 
+                    'movimentacoes.created_at as movimentacoes.created_at', 
+                    'movimentacoes.tipo as movimentacoes.tipo' ])
+        ->orderBy('movimentacoes.id', 'DESC');
 
         // Monta o datatable
         return Datatables::of( $query )
-        ->addColumn('actions', function( $model ) {
-            return '<div class="item-action dropdown">
-                        <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a href="'.url('transferencias/remover/'.$model->{'movimentacoes.id'}).'" class="dropdown-item"><i class="dropdown-icon fe fe-trash"></i> Deletar </a>
-                        </div>
-                    </div>';
+        ->editColumn('movimentacoes.tipo', function($model){
+            switch( $model->{'movimentacoes.tipo'}){
+                case 'S':
+                    return '<label class="label label-danger">Saída</label>';
+                break;
+                case 'E':
+                    return '<label class="label label-success">Saída</label>';
+                break;
+            }
         })
         ->editColumn('movimentacoes.valor', function( $model ) {
             return 'R$ '.number_format($model->{'movimentacoes.valor'},2,',','.');
         })
         ->editColumn('movimentacoes.created_at', function( $model ) {
-            return paraLer( $model->{'movimentacoes.created_at'} );
+            return date('H:i:s d/m/Y', strtotime( $model->{'movimentacoes.created_at'} ) );
         })
-        ->rawColumns(['actions'])
+        ->rawColumns(['movimentacoes.tipo'])
         ->make( true );
     }
 

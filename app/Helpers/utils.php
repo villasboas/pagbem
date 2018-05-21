@@ -12,4 +12,12 @@ function removeIfNull( $arr ) {
     });
 }
 
+/**
+ * Renderiza no formato de dinheiro
+ * 
+ */
+function money( $number, $sign = 'R$ ' ) {
+    return $sign.number_format($number, 2, ',', '.' );
+}
+
 // End of file
