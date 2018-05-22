@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="{{ asset( 'site/css/magnific-popup.css' ) }}">
     <link rel="stylesheet" href="{{ asset( 'site/css/owl.carousel.css' ) }}">
     <link rel="stylesheet" href="{{ asset( 'site/css/main.css' ) }}">
+
+    <style>
+        select[readonly] {
+            background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+            pointer-events: none;
+            touch-action: none;
+        }
+    </style>
+
     @stack('styles')
 </head>
 <body>

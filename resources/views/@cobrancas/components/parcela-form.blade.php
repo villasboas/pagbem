@@ -50,23 +50,24 @@
           </div>
         </div>
 
+        @if($fatura)
         <div class="row">
           <div class="col">
             <div class="form-group">
               <label class="form-label">Link de pagamento</label>
-              <a href="">pagseguro.com.br/id_da_cobranca</a>
+              <a href="{{ $fatura->link_pagseguro }}">Clique aqui para ver o link</a>
             </div>
           </div>
         </div>
-
         <div class="row">
           <div class="col">
             <div class="form-group">
               <label class="form-label">Código da parcela (utilizado pelo PagSeguro)</label>
-              fre232dfs34gg56675
+              {{ $fatura->codigo }}
             </div>
           </div>
         </div>
+        @endif
 
         <div class="row">
           <div class="col">
@@ -87,3 +88,12 @@
     </div>
   </form>
 </div>
+
+@if($fatura && $fatura->status != 'A' )
+  @push('scripts')
+  <script>
+    $('#status').attr('readonly', 'readonly');
+    $('#status').selectpicker('refresh');
+  </script>
+  @endpush
+@endif

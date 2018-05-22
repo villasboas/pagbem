@@ -12,6 +12,13 @@ class Cidades extends Model {
      * @var string
      */
     protected $table = 'cidades';
+
+    /**
+     * Adiciona a relacao com estados
+     */
+    function estado() {
+        return $this->belongsTo('\App\Models\Estados', 'estados_id');
+    }
 }
 
 // End of file

@@ -14,10 +14,20 @@ class CobrancasObserver {
      * @return void
      */
     public function updated( Cobrancas $cobranca ) {
-        if ( $cobranca->status <> 'A' ) {
+
+        // Verifica se a cobrança foi dada como paga
+        if ( $cobranca->status == 'C' ) {
+
+            // Percorre todas as faturas da cobrança
             foreach( $cobranca->faturas as $fatura ) {
-                $fatura->status = $cobranca->status;
-                $fatura->save();
+
+                // Verifica se a fatura já não foi marcada como paga
+                if ( $fatura->status != 'P' ) {
+
+                    // Seta a fatura como cancelada
+                    $fatura->status = 'C';
+                    $fatura->save();
+                }
             }
         }
     }

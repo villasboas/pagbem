@@ -37,6 +37,15 @@ class Faturas extends Model {
     function cobranca() {
         return $this->belongsTo('App\Models\Cobrancas', 'cobrancas_id');
     }
+
+    /**
+     * Boot da model
+     *
+     * @return void
+     */
+    static function boot() {
+        self::observe( \App\Observers\FaturasObserver::class);
+    }
 }
 
 // End of file

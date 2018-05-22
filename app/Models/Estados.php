@@ -12,6 +12,13 @@ class Estados extends Model {
      * @var string
      */
     protected $table = 'estados';
+
+    /**
+     * Relacao com cidades
+     */
+    function cidades() {
+        return $this->hasMany('\App\Models\Cidades', 'estados_id');
+    }
 }
 
 // End of file

@@ -56,6 +56,14 @@
     <!-- css -->
     <link rel="stylesheet" href="{{ asset( 'css/app.css' )}}">
 
+    <style>
+        select[readonly] {
+            background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+            pointer-events: none;
+            touch-action: none;
+        }
+    </style>
+
     <!-- stacks -->
     @stack('styles')
 </head>

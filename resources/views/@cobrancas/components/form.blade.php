@@ -20,10 +20,10 @@
         @endif
     </div>
 
-    @errorAlert
-    @successAlert
-
     <div class="card-body">
+
+      @include('@components.alert')
+      
       <div class="row">
         <div class="col">
           @select('clientes_id', '* Cliente')
@@ -81,3 +81,24 @@
     </div>
   </form>
 </div>
+
+@if($cobranca && $cobranca->status != 'A')
+  @push('scripts')
+  <script>
+      $('#status').prop('readonly', true);
+      $('#status').selectpicker('refresh');
+      $('#clientes_id').prop('readonly', true);
+      $('#clientes_id').selectpicker('refresh');
+  </script>
+  @endpush
+@endif
+
+@if($cobranca)
+  @push('scripts')
+  <script>
+    $('#total').prop('readonly', true);
+    $('#vencimento_primeira_parcela').prop('readonly', true);
+    $('#parcelas').prop('readonly', true);
+  </script>
+  @endpush
+@endif

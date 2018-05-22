@@ -38,7 +38,14 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 
     <link rel="stylesheet" href="https://cdn.rawgit.com/infostreams/bootstrap-select/fd227d46de2afed300d97fd0962de80fa71afb3b/dist/css/bootstrap-select.min.css" />
- 
+    
+    <style>
+        select[readonly] {
+            background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+            pointer-events: none;
+            touch-action: none;
+        }
+    </style>
 
     <!-- stacks -->
     @stack('styles')
