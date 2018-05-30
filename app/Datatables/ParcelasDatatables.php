@@ -35,7 +35,7 @@ class ParcelasDatatables extends CoreDatatables {
         
         // Monta a query
         $query = Db::table('faturas')
-        ->select(['id', 'valor', 'vencimento', 'status', 'id as actions'])
+        ->select(['id', 'valor', 'vencimento', 'status'])
         ->where('cobrancas_id', $cobranca->id );
 
         // Monta o datatable
@@ -51,11 +51,14 @@ class ParcelasDatatables extends CoreDatatables {
                 case 'C':
                     return __tag( 'Cancelada', 'red' );
                 break;
+                case 'V':
+                    return __tag( 'Atrasada', 'warning' );
+                break;
                 default:
                     return $model->status;
             }
         })
-        ->editColumn('actions', function( $model ) {
+        ->addColumn('actions', function( $model ) {
         return '<div class="item-action dropdown">
                     <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fe fe-more-vertical"></i></a>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -96,6 +99,9 @@ class ParcelasDatatables extends CoreDatatables {
                 break;
                 case 'C':
                     return __tag( 'Cancelada', 'red' );
+                break;
+                case 'V':
+                    return __tag( 'Atrasada', 'warning' );
                 break;
                 default:
                     return $model->status;

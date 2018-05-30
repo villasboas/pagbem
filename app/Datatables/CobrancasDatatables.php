@@ -58,6 +58,9 @@ class CobrancasDatatables extends CoreDatatables {
                 case 'C':
                     return __tag( 'Cancelada', 'red' );
                 break;
+                case 'V':
+                    return __tag( 'Atrasada', 'warning' );
+                break;
                 default:
                     return $model->status;
             }
