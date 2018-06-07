@@ -164,6 +164,7 @@
     <script type="text/javascript" src="{{ asset( 'assets/pages/dashboard.js' ) }}"></script>
     <script type="text/javascript" src="{{ asset( 'assets/pages/elements.js' ) }}"></script>
     <script src="{{ asset( 'assets/js/menu.min.js' ) }}"></script>
+    <script src="{{ asset( 'js/script.js' ) }}"></script>
 
     <script>
         var $window = $(window);

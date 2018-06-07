@@ -85,7 +85,7 @@ class TransferenciasController extends Controller {
             $movimentacao->delete();
 
             // Volta para a pagina original
-            return back()->with('success', 'Conta removida com sucesso!');
+            return back()->with('success', 'Transferência removida com sucesso!');
         } catch( \Error $e ) {  
 
             // Volta a mensagem de erro

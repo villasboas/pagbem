@@ -14,6 +14,14 @@ class FaturasObserver {
      * @return void
      */
     public function updated(Faturas $fatura) {
+        if ( $fatura->status == 'P' ) {
+            if(!$fatura->movimentacao) {
+                $fatura->criarMovimentacao();
+            } 
+        } else if( $fatura->movimentacao ) {
+            $fatura->movimentacao->delete();
+        }
+
         $fatura->cobranca->updateTotal();
     }
 

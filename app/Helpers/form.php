@@ -44,7 +44,7 @@ function select( $name, $label ) {
                 <select name=\"$name\"
                         id=\"$name\"
                         data-live-search='true'
-                        class=\"form-control selectpicker ".__e( $name, 'is-invalid' )."\">
+                        class=\"form-control selectpicker ".$name.' '.__e( $name, 'is-invalid' )."\">
                 ";
 }
 
@@ -106,7 +106,7 @@ function fgroup( $form, $name, $label, $placeholder, $type = 'text' ) {
                         value=\"".$inputValue."\"
                         name=\"$name\"
                         id=\"$name\"
-                        class=\"form-control ".__e( $name, 'is-invalid' )."\" 
+                        class=\"form-control ".__e( $name, 'is-invalid' )."".$name."\" 
                         placeholder=\"$placeholder\">
                 ".__bte( $name )."
             </div>";

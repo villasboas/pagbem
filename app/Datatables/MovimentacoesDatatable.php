@@ -35,7 +35,7 @@ class MovimentacoesDatatable extends CoreDatatables {
         
         // Monta a query
         $query = Db::table('movimentacoes')
-        ->join('contas_bancarias', 'movimentacoes.contas_bancarias_id', '=', 'contas_bancarias.id')
+        ->join('contas_bancarias', 'movimentacoes.contas_bancarias_id', '=', 'contas_bancarias.id', 'left')
         ->select([  'movimentacoes.id as movimentacoes.id', 
                     'contas_bancarias.nome as contas_bancarias.nome', 
                     'movimentacoes.valor as movimentacoes.valor', 
@@ -45,13 +45,20 @@ class MovimentacoesDatatable extends CoreDatatables {
 
         // Monta o datatable
         return Datatables::of( $query )
+        ->editColumn('contas_bancarias.nome', function($model){
+            if ($model->{'contas_bancarias.nome'}) {
+                return $model->{'contas_bancarias.nome'};
+            } else {
+                return 'Pagamento de fatura';
+            }
+        })
         ->editColumn('movimentacoes.tipo', function($model){
             switch( $model->{'movimentacoes.tipo'}){
                 case 'S':
                     return '<label class="label label-danger">Saída</label>';
                 break;
                 case 'E':
-                    return '<label class="label label-success">Saída</label>';
+                    return '<label class="label label-success">Entrada</label>';
                 break;
             }
         })

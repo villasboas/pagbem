@@ -113,7 +113,7 @@
       </div>
 
       <div class="card-footer">
-        <button class="btn btn-success btn-block">
+        <button data-submit="submit" class="btn btn-success btn-block">
           Salvar cliente
         </button>
       </div>

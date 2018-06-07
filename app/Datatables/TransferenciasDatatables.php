@@ -22,7 +22,8 @@ class TransferenciasDatatables extends CoreDatatables {
         'Código' => 'movimentacoes.id',
         'Conta Bancária'  => 'contas_bancarias.nome',
         'Valor'  => 'movimentacoes.valor',
-        'Data'   => 'movimentacoes.created_at'
+        'Data'   => 'movimentacoes.created_at',
+        'Ações'  => 'actions'
     ];
 
     /**

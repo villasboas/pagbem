@@ -43,10 +43,10 @@
                       <b>Descrição:</b> <br>  {{ $cobranca->descricao }}
                     </div>
                     <div class="list-group-item">
-                      <b>Total:</b> <br>  R$ {{ number_format( $cobranca->total, 2, ',', '.' )}}
+                      <b>Total:</b> <br> {{money( $cobranca->total )}}
                     </div>
                     <div class="list-group-item">
-                      <b>Total pago:</b> <br>  R$ 00,00
+                      <b>Total pago:</b> <br>  {{money($cobranca->obterTotalPago())}}
                     </div>
                   </div>
                 </div>

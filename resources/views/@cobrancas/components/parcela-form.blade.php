@@ -1,9 +1,9 @@
 <div class="col-5">
 
   @if($fatura = session()->get('fatura'))
-  <form action="{{ url('/parcelas/cobranca/'.$cobranca->id.'/'.$fatura->id) }}" method="POST" class="card">
+  <form novalidate action="{{ url('/parcelas/cobranca/'.$cobranca->id.'/'.$fatura->id) }}" method="POST" class="card">
   @else  
-  <form action="{{ url('/parcelas/cobranca/'.$cobranca->id) }}" method="POST" class="card">
+  <form novalidate action="{{ url('/parcelas/cobranca/'.$cobranca->id) }}" method="POST" class="card">
   @endif
     
     {{ csrf_field() }}
@@ -82,7 +82,7 @@
     </div>
 
     <div class="card-footer">
-      <button class="btn btn-success btn-block">
+      <button data-submit="submit" class="btn btn-success btn-block">
         Salvar parcela
       </button>
     </div>

@@ -76,6 +76,24 @@ class Cobrancas extends Model {
             $this->save();
         }
     }
+
+    /**
+     * Obtem a quantia paga nessa fatura
+     *
+     * @return void
+     */
+    function obterTotalPago() {
+        // obtem os totais
+        $totalCalculado = 0;
+
+        // Calcula o total registrado nas faturas
+        foreach( $this->faturas as $fatura ) {
+            if ( $fatura->status == 'P' ) $totalCalculado += $fatura->valor;
+        }
+
+        // Volta o total calculado
+        return $totalCalculado;
+    }
 }
 
 // End of file

@@ -1,9 +1,9 @@
 <div class="col-5">
     
         @if($movimentacao = session()->get('movimentacao'))
-        <form action="{{ url('transferencias/'.$movimentacao->id) }}" method="POST" class="card">
+        <form novalidate action="{{ url('transferencias/'.$movimentacao->id) }}" method="POST" class="card">
         @else
-        <form action="{{ url('transferencias') }}" method="POST" class="card">
+        <form novalidate action="{{ url('transferencias') }}" method="POST" class="card">
         @endif
     
           {{ csrf_field() }}
@@ -41,7 +41,7 @@
           </div>
     
           <div class="card-footer">
-            <button class="btn btn-success btn-block">
+            <button data-submit="submit" class="btn btn-success btn-block">
               Informar transferência
             </button>
           </div>
