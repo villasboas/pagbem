@@ -12,7 +12,6 @@ use App\Models\Faturas as Faturas;
  */
 class FaturasAtrasadasController extends Controller {
     
-
     /**
      * Execeuta o CRON
      *

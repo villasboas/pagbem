@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'canaldosono.com.br',
+        'secret' => 'key-2c9d8a1163c59c12b2b236da8c728de2',
     ],
 
     'ses' => [
