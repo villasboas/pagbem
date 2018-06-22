@@ -20,7 +20,7 @@ class CobrancasController extends Controller {
      *
      * @return void
      */
-    function index() {
+    function index() {     
         
         // Obtem o builder do datatable
         $builder = CobrancasDatatables::builder('cobrancas/datatables');
