@@ -47,7 +47,7 @@
               <label class="form-label">Nota fiscal</label>
               <input type="file" name="nota_fiscal">
               <br>
-              @if($fatura->nota_fiscal)
+              @if($fatura && $fatura->nota_fiscal)
               <a target="blank" href="{{url('storage/'.$fatura->nota_fiscal)}}">Baixar nota fiscal</a>
               @endif
             </div>
