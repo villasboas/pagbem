@@ -35,7 +35,9 @@ class ParcelasController extends Controller {
     function create(FaturasRequest $request, Cobrancas $cobranca, Faturas $fatura ) {
         try {
             $data = $request->all();
+            $path = $request->file('nota_fiscal')->store('notas');
             $data['cobrancas_id'] = $cobranca->id;
+            $data['nota_fiscal'] = $path;
             $data['codigo'] = \App\Core\Token::generate();
             $fatura->fill($data)->save();
             return back()->with('success', 'Fatura criada com sucesso!');
@@ -52,7 +54,13 @@ class ParcelasController extends Controller {
      */
     function store(FaturasRequest $request, Cobrancas $cobranca, Faturas $fatura) {
         try {
-            $fatura->fill($request->all())->save();
+            $data = $request->all();
+
+            // Obtem a nota fiscal
+            $path = $request->file('nota_fiscal')->store('notas');
+            $data['nota_fiscal'] = $path;
+
+            $fatura->fill($data)->save();
             return back()->with('success', 'Fatura salva com sucesso');
         } catch( \Error $e ) {
             return back()->with('error','Erro ao salvar a parcela');

@@ -1,9 +1,9 @@
 <div class="col-5">
 
   @if($fatura = session()->get('fatura'))
-  <form novalidate action="{{ url('/parcelas/cobranca/'.$cobranca->id.'/'.$fatura->id) }}" method="POST" class="card">
+  <form novalidate enctype="multipart/form-data" action="{{ url('/parcelas/cobranca/'.$cobranca->id.'/'.$fatura->id) }}" method="POST" class="card">
   @else  
-  <form novalidate action="{{ url('/parcelas/cobranca/'.$cobranca->id) }}" method="POST" class="card">
+  <form novalidate enctype="multipart/form-data" action="{{ url('/parcelas/cobranca/'.$cobranca->id) }}" method="POST" class="card">
   @endif
     
     {{ csrf_field() }}
@@ -45,7 +45,11 @@
           <div class="col">
             <div class="form-group pb-1">
               <label class="form-label">Nota fiscal</label>
-              <input type="file" name="" id="">
+              <input type="file" name="nota_fiscal">
+              <br>
+              @if($fatura->nota_fiscal)
+              <a target="blank" href="{{url('storage/'.$fatura->nota_fiscal)}}">Baixar nota fiscal</a>
+              @endif
             </div>
           </div>
         </div>
