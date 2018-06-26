@@ -56,9 +56,11 @@ class ParcelasController extends Controller {
         try {
             $data = $request->all();
 
-            // Obtem a nota fiscal
-            $path = $request->file('nota_fiscal')->store('notas');
-            $data['nota_fiscal'] = $path;
+            if( $request->file('nota_fiscal') ) {
+                // Obtem a nota fiscal
+                $path = $request->file('nota_fiscal')->store('notas');
+                $data['nota_fiscal'] = $path;
+            }
 
             $fatura->fill($data)->save();
             return back()->with('success', 'Fatura salva com sucesso');

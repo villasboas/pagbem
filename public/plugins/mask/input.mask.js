@@ -18,8 +18,8 @@ $(document).ready(function(){
     $('.mixed').mask('AAA 000-S0S');
     $('.cpf').mask('000.000.000-00', {reverse: true});
     $('.cnpj').mask('99.999.999/9999-99', {reverse: true});
-    $('.money').mask('000.000.000.000.000,00', {reverse: true});
-
+    $('.valor').mask('000000000000000.00', {reverse: true});
+    $('.total').mask('000000000000000.00', {reverse: true});
     atualizaMascaraDocumento($('.tipo_documento'), $('.documento'));
     $('.tipo_documento').on('change', function(){
         atualizaMascaraDocumento($(this), $('.documento'));

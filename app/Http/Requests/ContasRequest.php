@@ -25,7 +25,7 @@ class ContasRequest extends FormRequest {
             'nome'                   => 'required|min:3|max:255',
             'bancos_id'              => 'required',
             'tipo_conta'             => 'required',
-            'conta'                  => 'required|integer',
+            'conta'                  => 'required',
             'digito_conta'           => 'nullable|integer',
             'agencia'                => 'required|integer',
             'digito_agencia'         => 'nullable|integer',

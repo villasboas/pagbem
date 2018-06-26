@@ -10,7 +10,7 @@
         <div class="container">
             <div class="page-header">
                     <h1 class="page-title">
-                        Contas Bancárias
+                        Transferências
                     </h1>
                 </div>
 

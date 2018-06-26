@@ -145,7 +145,7 @@ function fdate( $form, $name, $label, $placeholder ) {
  * @return void
  */
 function fnumber( $form,$name, $label, $placeholder ) {
-    return fgroup( $form, $name, $label, $placeholder, 'number' );
+    return fgroup( $form, $name, $label, $placeholder, 'text' );
 }
 
 /**
