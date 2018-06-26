@@ -104,7 +104,7 @@
             <div class="col">                
               @select('status', '* Status')
                 @option('cliente', 'status', 'A', 'Ativo' )
-                @option('cliente', 'status', 'I', 'Inadinplente' )
+                @option('cliente', 'status', 'I', 'Inadimplente' )
                 @option('cliente', 'status', 'B', 'Bloqueado' )
               @endselect('status')
             </div>
