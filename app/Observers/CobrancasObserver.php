@@ -45,7 +45,7 @@ class CobrancasObserver {
 
             // Seta o vencimento
             if ( $i == 0 ) {
-                $vencimento = date('Y-m-d H:i:s', time() );
+                $vencimento = date('Y-m-d H:i:s', strtotime( $cobranca->vencimento_primeira_parcela ) );
             } else {
                 $vencimento = date('Y-m-d H:i:s', strtotime( '+'.$i.' months', strtotime( $cobranca->vencimento_primeira_parcela ) ) );
             }
